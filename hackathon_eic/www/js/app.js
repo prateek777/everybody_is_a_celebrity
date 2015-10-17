@@ -11,12 +11,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 .run(function($ionicPlatform, $ionicPopup, ngFB) {
 
-  if(!device.uuid){
-    device = {'uuid':1} 
-  }
-  else{
-    window.device_id = device.uuid;
-  }
+
 
   ngFB.init({appId: '388302681377227'});
   // ngFB.init({appId: '458134337691739'});
@@ -48,6 +43,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    retries = 0
+        
   });
 })
 

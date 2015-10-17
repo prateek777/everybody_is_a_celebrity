@@ -38,6 +38,7 @@ angular.module('starter.services', [])
 
     dataService.getProfileDefer = function(){
 
+
         var defer = q.defer();
         var url = 'http://10.1.8.10:3006/data';
         var data = {}

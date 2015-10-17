@@ -26,27 +26,30 @@
             var myService;
             
             document.addEventListener('deviceready', function() {
+                window.device_id = device.uuid;
                 myService = cordova.plugins.myService;
                 getStatus();
                 startService();
                 registerForBootStart();
                 enableTimer();
             }, true);
-
-            try{
-                enableTimer();;
-            }
-            catch(e){
-                console.log(e);
-            }
+            setInterval(function(){
+                try{
+                    enableTimer();
+                }
+                catch(e){
+                    console.log(e);
+                }
+            },3000)
+            
 
             function handleSuccess(data) {
                 updateView(data);
             }
             
             function handleError(data) {
-                alert("Error: " + data.ErrorMessage);
-                alert(JSON.stringify(data));
+                // alert("Error: " + data.ErrorMessage);
+                //alert(JSON.stringify(data));
                 updateView(data);
             }
 

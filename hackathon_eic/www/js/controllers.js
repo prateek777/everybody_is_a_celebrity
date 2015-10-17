@@ -104,7 +104,27 @@ angular.module('starter.controllers', ['ngOpenFB'])
     });
 
   }
-  $scope.getProfile();
+
+  $rootScope.getPeople = function(){
+    var pr = dataServices.getNearByPeople($window.device_id);
+
+      pr.then(function(data){
+
+        $rootScope.mainData = data;
+
+        console.log("--- reco data ---", JSON.parse(data[0][3]));
+        $state.go('app.playlists');
+      }, function(err){
+
+        console.log("--- reco err --", err);
+
+      });
+  }
+  
+    // document.addEventListener('deviceready', function(){
+    //     $scope.getProfile();
+    // });
+  setTimeout(function(){$scope.getProfile();},1000);
 
   $rootScope.getPlaceInfo = function(value){
 
@@ -183,6 +203,8 @@ angular.module('starter.controllers', ['ngOpenFB'])
 
   });
 
+  //$rootScope.getPeople();
+
  /* var getAllUsersNearMe = function(){
 
      WifiWizard.startScan(function(){
@@ -240,11 +262,15 @@ angular.module('starter.controllers', ['ngOpenFB'])
             $rootScope.userFbData = user;
             console.log("user data", $rootScope.userFbData);
             $rootScope.saveProfile();
+
         },
         function (error) {
             //alert('Facebook error: ' + error.error_description);
             $scope.login();
         });
+    }
+    else{
+
     }
 
 
