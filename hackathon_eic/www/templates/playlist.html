@@ -1,0 +1,28 @@
+<ion-view view-title="Person Around You">
+  <ion-content>
+
+    <div class="list card">
+
+	  <div class="item item-avatar">
+	    <img src="{{userData[4]}}">
+	    <h2>{{userData[1]}}</h2>
+	    <p>{{getPlaceInfo(userData[3])}}</p>
+	  </div>
+
+	  <h4 style="padding:0px 20px;"> Work History </h4>
+	  <div class="item item-body">
+	    <!-- <img class="full-image" src="delorean.jpg"> -->
+	    <p>
+	     {{userWorkData[0].position.name}} at {{userWorkData[0].employer.name}}, {{userWorkData[0].location.name}}
+	    </p>
+	  </div>
+	  <h4 style="padding:0px 20px;">Education History</h4>
+	  <div class="item item-body" >
+	    <!-- <img class="full-image" src="delorean.jpg"> -->
+	    <p>
+	     {{userEducationData[1].type}} from {{userEducationData[1].school.name}}
+	    </p>
+	  </div>
+	</div>
+  </ion-content>
+</ion-view>
